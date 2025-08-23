@@ -105,9 +105,8 @@
     // Ignore clicks on the browser chrome or outside doc
     if (!(e.target instanceof Element)) return;
 
-    const rect = document.documentElement.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX;
+    const y = e.clientY;
 
     runEffect(x, y);
   };
