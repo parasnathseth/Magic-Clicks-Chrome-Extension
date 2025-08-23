@@ -4,7 +4,7 @@
     effect: "confetti",
     intensity: 1,
     colors: ["#ff4757", "#3742fa", "#2ed573", "#ffa502", "#a55eea", "#1e90ff", "#ff6b81"],
-    reduceMotionRespect: true
+    reduceMotionRespect: false
   };
 
   let state = { ...DEFAULTS };
