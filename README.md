@@ -1,6 +1,6 @@
-# Confetti & Fireworks Clicker (Chrome Extension)
+# Magic Clicks (Chrome Extension)
 
-Delightful clicks anywhere on the web. Pure client-side, Manifest V3.
+Add delightful bursts of confetti, fireworks or balloons, wherever you click! Purely client-side, Manifest V3.
 
 ## Features
 - Toggle on/off from the toolbar popup
