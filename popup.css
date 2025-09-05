@@ -1,102 +1,159 @@
-body { 
-    margin: 0; 
-    padding: 10px 12px 12px; 
-    width: 300px; 
-    color: #111; 
+body {
+    margin: 0;
+    padding: 12px 14px 14px;
+    width: 300px;
+    color: #111;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
-h1 { 
-    font-size: 16px; 
-    margin: 0; 
+
+h1 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+    color: #222;
 }
-header { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    margin-bottom: 10px; 
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
 }
-section { 
-    display: grid; 
-    gap: 10px; 
+
+section {
+    display: grid;
+    gap: 12px;
 }
-label { 
-    display: grid; 
-    gap: 4px; 
+
+label {
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
 }
-.row { 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
 }
-fieldset { 
-    border: 1px solid #e5e5e5; 
-    padding: 8px; 
-    border-radius: 8px; 
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fafafa;
 }
-legend { 
-    padding: 0 6px; 
+
+legend {
+    padding: 0 6px;
+    font-weight: 500;
+    font-size: 13px;
 }
-#colors { 
-    display: grid; 
-    gap: 6px; 
+
+#colors {
+    display: grid;
+    gap: 8px;
 }
-.color-row { 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
+
+.color-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-.color-row input[type="color"] { 
-    width: 40px; 
-    height: 24px; 
-    padding: 0; 
-    border: none; 
-    background: none; 
+
+.color-row input[type="color"] {
+    width: 40px;
+    height: 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
-button { 
-    cursor: pointer; 
+
+/* Form controls */
+select,
+input[type="range"],
+input[type="checkbox"],
+button {
+    font: inherit;
+    cursor: pointer;
 }
-footer { 
-    display: flex; 
-    
-    align-items: center; 
-    justify-content: space-between; 
-    margin-top: 6px; 
+
+select,
+input[type="range"] {
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
 }
-.hint { 
-    color: #666; 
+
+button {
+    padding: 6px 12px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background: #eaeaea;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.hint {
+    color: #666;
+    font-size: 12px;
 }
 
 /* toggle switch */
-.switch { 
-    position: relative; 
-    width: 44px; 
-    height: 24px; 
-    display: inline-block; 
+.switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    display: inline-block;
 }
-.switch input { 
-    display: none; 
+
+.switch input {
+    display: none;
 }
+
 .slider {
-  position: absolute; 
-  inset: 0; 
-  background: #ddd; 
-  border-radius: 24px; 
-  transition: 0.2s;
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 24px;
+    transition: 0.25s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+
 .slider:before {
-  content: ""; 
-  
-  position: absolute; 
-  height: 18px; 
-  width: 18px; 
-  left: 3px; 
-  top: 3px;
-  background: #fff; 
-  border-radius: 50%; 
-  transition: 0.2s;
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.25s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-input:checked + .slider { 
-    background: #6cc24a; 
+
+input:checked+.slider {
+    background: #6cc24a;
 }
-input:checked + .slider:before { 
-    transform: translateX(20px); 
+
+input:checked+.slider:before {
+    transform: translateX(20px);
 }
