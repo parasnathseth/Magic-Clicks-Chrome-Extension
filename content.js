@@ -44,7 +44,7 @@
       bind();
       ready = true;
     } catch (e) {
-      console.warn("[ConfettiClicker] init error:", e);
+      console.warn("[MagicClicks] init error:", e);
     }
 
     await waitForOverlayClass();
