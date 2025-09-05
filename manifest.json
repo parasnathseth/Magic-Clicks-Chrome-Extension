@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Magic Clicks",
   "version": "1.0.0",
-  "description": "Add delightful bursts of confetti, fireworks or balloons, wherever you click!",
+  "description": "Add delightful animations, wherever you click!",
   "action": {
     "default_title": "Magic Clicks",
     "default_popup": "popup.html",

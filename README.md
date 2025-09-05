@@ -1,6 +1,6 @@
 # Magic Clicks (Chrome Extension)
 
-Add delightful bursts of confetti, fireworks or balloons, wherever you click! Purely client-side, Manifest V3.
+Add delightful animations wherever you click! Purely client-side, Manifest V3.
 
 ## Features
 - Toggle on/off from the toolbar popup
