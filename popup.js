@@ -1,9 +1,17 @@
 const DEFAULTS = {
   enabled: true,
-  effect: "confetti",
+  effect: "shuffle",
   intensity: 1,
-  colors: ["#ff4757", "#3742fa", "#2ed573", "#ffa502", "#a55eea", "#1e90ff", "#ff6b81"],
-  reduceMotionRespect: true
+  colors: [
+    "#ff4757",
+    "#3742fa",
+    "#2ed573",
+    "#ffa502",
+    "#a55eea",
+    "#1e90ff",
+    "#ff6b81",
+  ],
+  reduceMotionRespect: true,
 };
 
 const $ = (sel) => document.querySelector(sel);
@@ -37,9 +45,13 @@ function renderColors(colors) {
     del.textContent = "✕";
     del.title = "Remove";
     del.addEventListener("click", async () => {
-      const { colors } = await chrome.storage.local.get({ colors: DEFAULTS.colors });
+      const { colors } = await chrome.storage.local.get({
+        colors: DEFAULTS.colors,
+      });
       colors.splice(idx, 1);
-      await chrome.storage.local.set({ colors: colors.length ? colors : DEFAULTS.colors });
+      await chrome.storage.local.set({
+        colors: colors.length ? colors : DEFAULTS.colors,
+      });
       load();
     });
 
@@ -60,19 +72,34 @@ async function save(key, value) {
 }
 
 async function saveColor(index, value) {
-  const { colors } = await chrome.storage.local.get({ colors: DEFAULTS.colors });
+  const { colors } = await chrome.storage.local.get({
+    colors: DEFAULTS.colors,
+  });
   colors[index] = value;
   await chrome.storage.local.set({ colors });
 }
 
-$("#enabled").addEventListener("change", e => save("enabled", e.target.checked));
-$("#effect").addEventListener("change", e => save("effect", e.target.value));
-$("#intensity").addEventListener("input", e => save("intensity", Number(e.target.value)));
-$("#reduced").addEventListener("change", e => save("reduceMotionRespect", e.target.checked));
+$("#enabled").addEventListener("change", (e) =>
+  save("enabled", e.target.checked)
+);
+$("#effect").addEventListener("change", (e) => save("effect", e.target.value));
+$("#intensity").addEventListener("input", (e) =>
+  save("intensity", Number(e.target.value))
+);
+$("#reduced").addEventListener("change", (e) =>
+  save("reduceMotionRespect", e.target.checked)
+);
 
 $("#addColor").addEventListener("click", async () => {
-  const { colors } = await chrome.storage.local.get({ colors: DEFAULTS.colors });
-  colors.push("#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0"));
+  const { colors } = await chrome.storage.local.get({
+    colors: DEFAULTS.colors,
+  });
+  colors.push(
+    "#" +
+      Math.floor(Math.random() * 0xffffff)
+        .toString(16)
+        .padStart(6, "0")
+  );
   await chrome.storage.local.set({ colors });
   load();
 });

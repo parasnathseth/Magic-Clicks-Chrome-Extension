@@ -128,20 +128,32 @@
       y,
       colors: state.colors,
       count: Math.round(60 * intensity),
-      power: 1 * intensity
+      power: 1 * intensity,
     };
 
-    switch (state.effect) {
-      case "fireworks":
-        overlay.engine.fireworks(options);
-        break;
-      case "balloons":
-        overlay.engine.balloons(options);
-        break;
-      case "confetti":
-      default:
-        overlay.engine.confetti(options);
-        break;
+    // Getting the names of all the effects from the prototype and filtering out unrequired ones
+    const allEffects = Object.getOwnPropertyNames(
+      Object.getPrototypeOf(overlay.engine)
+    ).filter(
+      (k) =>
+        typeof overlay.engine[k] === "function" &&
+        !k.startsWith("_") &&
+        k !== "constructor"
+    );
+
+    let effectToRun = state.effect;
+
+    if (state.effect === "shuffle") {
+      // Exclude shuffle itself, if ever added dynamically
+      const playable = allEffects.filter((e) => e !== "shuffle");
+      effectToRun = playable[Math.floor(Math.random() * playable.length)];
+      console.log("Shuffling effect to:", effectToRun);
+    }
+
+    if (typeof overlay.engine[effectToRun] === "function") {
+      overlay.engine[effectToRun](options);
+    } else {
+      overlay.engine.confetti(options); // fallback
     }
   };
 
