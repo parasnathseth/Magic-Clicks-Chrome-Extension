@@ -3,8 +3,16 @@
     enabled: true,
     effect: "confetti",
     intensity: 1,
-    colors: ["#ff4757", "#3742fa", "#2ed573", "#ffa502", "#a55eea", "#1e90ff", "#ff6b81"],
-    reduceMotionRespect: false
+    colors: [
+      "#ff4757",
+      "#3742fa",
+      "#2ed573",
+      "#ffa502",
+      "#a55eea",
+      "#1e90ff",
+      "#ff6b81",
+    ],
+    reduceMotionRespect: false,
   };
 
   let state = { ...DEFAULTS };
@@ -12,16 +20,15 @@
   let ready = false;
 
   const waitForOverlayClass = () =>
-    new Promise(resolve => {
-        if (window.ParticleOverlay) 
-            return resolve();
-        
-        const iv = setInterval(() => {
-            if (window.ParticleOverlay) { 
-                clearInterval(iv); 
-                resolve(); 
-            }
-        }, 0);
+    new Promise((resolve) => {
+      if (window.ParticleOverlay) return resolve();
+
+      const iv = setInterval(() => {
+        if (window.ParticleOverlay) {
+          clearInterval(iv);
+          resolve();
+        }
+      }, 0);
     });
 
   const init = async () => {
@@ -55,7 +62,7 @@
       height: "100vh",
       pointerEvents: "none",
       zIndex: "2147483647",
-      transform: "none !important"
+      transform: "none !important",
     });
 
     const shadow = host.attachShadow({ mode: "open" });
@@ -67,7 +74,7 @@
       width: "100vw",
       height: "100vh",
       display: "block",
-      pointerEvents: "none"
+      pointerEvents: "none",
     });
     shadow.appendChild(canvas);
 
@@ -93,14 +100,17 @@
         state[k] = newValue;
       }
     });
-
   };
 
   const onClick = (e) => {
     if (!ready || !state.enabled || !overlay) return;
 
     // Respect prefers-reduced-motion if enabled
-    if (state.reduceMotionRespect && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      state.reduceMotionRespect &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
 
     // Ignore clicks on the browser chrome or outside doc
     if (!(e.target instanceof Element)) return;

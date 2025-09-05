@@ -24,7 +24,7 @@
           new RectParticle(x, y, speed, angle, size, color, life, {
             gravity: 0.15,
             drag: 0.985,
-            spin: tilt
+            spin: tilt,
           })
         );
       }
@@ -42,12 +42,12 @@
           new CircleParticle(x, y, speed, angle, size, color, life, {
             gravity: 0.12,
             drag: 0.992,
-            twinkle: true
+            twinkle: true,
           })
         );
       }
 
-      // optional sparkle trail
+      // secondary smaller white particles
       for (let i = 0; i < count / 3; i++) {
         const angle = rand(0, Math.PI * 2);
         const speed = rand(1, 3) * power;
@@ -58,14 +58,13 @@
           new CircleParticle(x, y, speed, angle, size, color, life, {
             gravity: 0.05,
             drag: 0.99,
-            fadeEarly: true
+            fadeEarly: true,
           })
         );
       }
     }
 
     balloons({ x, y, colors, count = 20, power = 1 }) {
-      // slow, rising balloons with string (simple)
       for (let i = 0; i < count; i++) {
         const angle = rand(-Math.PI / 8, Math.PI / 8);
         const speed = rand(0.8, 1.6) / power;
@@ -75,7 +74,7 @@
         this.particles.push(
           new BalloonParticle(x, y, speed, angle, size, color, life, {
             buoyancy: -0.06,
-            wobble: rand(0.004, 0.01)
+            wobble: rand(0.004, 0.01),
           })
         );
       }
@@ -89,11 +88,11 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const now = performance.now() / 1000; // in seconds
-      this.particles = this.particles.filter(p => !p.dead);
-      for (const p of this.particles) { 
+      this.particles = this.particles.filter((p) => !p.dead);
+      for (const p of this.particles) {
         p.update(1 / 60, now);
       }
-      for (const p of this.particles) { 
+      for (const p of this.particles) {
         p.draw(ctx);
       }
 
@@ -135,7 +134,8 @@
     update(dt) {
       this.age += dt;
       if (this.age >= this.life) this.dead = true;
-      if (this.opts.fadeEarly) this.alpha = Math.max(0, 1 - this.age / this.life);
+      if (this.opts.fadeEarly)
+        this.alpha = Math.max(0, 1 - this.age / this.life);
       this.physics(dt);
     }
   }
@@ -157,7 +157,7 @@
       super.update(dt);
       if (this.opts.twinkle) {
         // twinkle by modulating alpha
-        this.alpha = 0.6 + 0.4 * Math.sin((this.age * 20) + this.size);
+        this.alpha = 0.6 + 0.4 * Math.sin(this.age * 20 + this.size);
       }
     }
     draw(ctx) {
@@ -173,9 +173,10 @@
 
   class BalloonParticle extends BaseParticle {
     update(dt) {
-      this.vy += (this.opts.buoyancy ?? -0.05); // rise
+      this.vy += this.opts.buoyancy ?? -0.05; // rise
       // gentle horizontal wobble
-      this.vx += Math.sin((this.age + this.size) * 4) * (this.opts.wobble ?? 0.006);
+      this.vx +=
+        Math.sin((this.age + this.size) * 4) * (this.opts.wobble ?? 0.006);
       super.update(dt);
       // balloons fade near the end
       const t = this.age / this.life;
