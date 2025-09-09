@@ -20,6 +20,18 @@ body {
   line-height: 1.4;
 }
 
+.notice button.dismiss {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  background: transparent;
+  border: none;
+  color: #856404;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
 h1 {
     font-size: 16px;
     margin: 0;

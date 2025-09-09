@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <div class="notice">
-      ⚠️ Heads up: Magic Clicks won't work on already-open tabs until you reload them.  
-      It also won't run on the Chrome Web Store, Chrome's internal pages, or blank new tabs.
+   <div id="notice" class="notice" style="display:none;">
+      ⚠️ Heads up: Magic Clicks won’t work on already-open tabs until you reload them.  
+      It also won’t run on the Chrome Web Store, Chrome internal pages, or blank new tabs.
+      <button class="dismiss" title="Dismiss">×</button>
     </div>
 
     <header>
@@ -60,5 +61,6 @@
     </footer>
 
     <script src="popup.js"></script>
+    <script src="popupWarningNotice.js"></script>
   </body>
 </html>
