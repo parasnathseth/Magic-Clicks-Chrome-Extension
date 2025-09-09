@@ -9,6 +9,17 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+.notice {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  font-size: 13px;
+  padding: 8px;
+  margin: 0 0 10px 0;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
 h1 {
     font-size: 16px;
     margin: 0;
